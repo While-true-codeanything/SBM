@@ -18,36 +18,28 @@
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
-    <FrameLayout
+    <LinearLayout
+        android:id="@+id/place"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:orientation="vertical">
 
-        <androidx.recyclerview.widget.RecyclerView
+        <FrameLayout
+            android:id="@+id/list_place"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            app:layoutManager="LinearLayoutManager" />
+            android:layout_weight="1" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton"
+        <TextView
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end|bottom"
-            android:backgroundTint="@android:color/holo_red_light"
-            android:clickable="true"
-            app:srcCompat="@drawable/ic_add" />
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="+ 10000"
+            android:textColor="#2EEC40"
+            android:textSize="25sp" />
 
-    </FrameLayout>
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="+ 10000"
-        android:textColor="#2EEC40"
-        android:textSize="25sp" />
+    </LinearLayout>
 
 </LinearLayout>

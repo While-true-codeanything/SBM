@@ -21,17 +21,17 @@ class MainActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.navigation_plus -> {
                     title = "Доходы"
-                    /* loadFragment(MainPageFragment())*/
+                    loadFragment(ListFragment(), R.id.list_place)
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.navigation_min -> {
                     title = "Расходы"
-                    /* loadFragment(SettingsFragment())*/
+                    loadFragment(ListFragment(), R.id.list_place)
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.navigation_all -> {
                     title = "Все"
-                    /*  loadFragment(AppSettingsFragment())*/
+                    loadFragment(AllFragment(ArrayList()), R.id.list_place)
                     return@OnNavigationItemSelectedListener true
                 }
             }
