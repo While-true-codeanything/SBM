@@ -7,10 +7,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    fun loadFragment(fragment: Fragment, id: Int) {
+    fun loadFragment(fragment: Fragment) {
         val ft =
             supportFragmentManager.beginTransaction()
-        ft.replace(id, fragment)
+        ft.replace(R.id.place, fragment)
         ft.commit()
     }
 
@@ -27,17 +27,17 @@ class MainActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.navigation_plus -> {
                     title = "Доходы"
-                    loadFragment(ListFragment(1), R.id.list_place)
+                    loadFragment(ListFragment(1))
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.navigation_min -> {
                     title = "Расходы"
-                    loadFragment(ListFragment(2), R.id.list_place)
+                    loadFragment(ListFragment(2))
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.navigation_all -> {
                     title = "Все"
-                    loadFragment(AllFragment(), R.id.list_place)
+                    loadFragment(AllFragment())
                     return@OnNavigationItemSelectedListener true
                 }
             }

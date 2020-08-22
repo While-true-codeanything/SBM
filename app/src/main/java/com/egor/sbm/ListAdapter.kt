@@ -1,13 +1,12 @@
 package com.egor.sbm
 
-import android.app.Activity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.data_item.view.*
 
-class ListAdapter(var type: Int, var act: Activity) :
+class ListAdapter(var type: Int, var act: MainActivity) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var list: ArrayList<DataItem>
 
@@ -48,8 +47,8 @@ class ListAdapter(var type: Int, var act: Activity) :
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val holder = holder as ItemHolder
-        holder.value.setOnLongClickListener {
-
+        holder.body.setOnLongClickListener {
+            act.loadFragment(AddAndModFragment())
             true
         }
         holder.name.text = list.get(position).Name
@@ -68,6 +67,7 @@ class ListAdapter(var type: Int, var act: Activity) :
 
     inner class ItemHolder(root: View) :
         RecyclerView.ViewHolder(root) {
+        val body = root.item
         val name = root.name
         val time = root.time
         val value = root.value

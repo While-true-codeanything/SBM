@@ -1,12 +1,13 @@
 package com.egor.sbm
 
-import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.list_fragment.*
+import kotlinx.android.synthetic.main.all_list_fragment.*
+import kotlinx.android.synthetic.main.list_fragment.list
+import kotlinx.android.synthetic.main.list_fragment.total
 
 class AllFragment() : Fragment() {
 
@@ -31,6 +32,9 @@ class AllFragment() : Fragment() {
             total.text = a.toString()
             total.setTextColor(resources.getColor(R.color.Red))
         }
-        list.adapter = ListAdapter(0, activity as Activity)
+        create.setOnClickListener {
+            (activity as MainActivity).loadFragment(AddAndModFragment())
+        }
+        list.adapter = ListAdapter(0, activity as MainActivity)
     }
 }
