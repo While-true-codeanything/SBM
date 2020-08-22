@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_home"
+        android:id="@+id/navigation_plus"
         android:icon="@drawable/ic_add"
         android:title="" />
 
     <item
-        android:id="@+id/navigation_uliss"
+        android:id="@+id/navigation_min"
         android:icon="@drawable/ic_remove"
         android:title="" />
 
     <item
-        android:id="@+id/navigation_timetable"
+        android:id="@+id/navigation_all"
         android:icon="@drawable/ic_list"
         android:title="" />
 
