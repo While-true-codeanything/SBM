@@ -48,7 +48,7 @@ class ListAdapter(var type: Int, var act: MainActivity) :
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val holder = holder as ItemHolder
         holder.body.setOnLongClickListener {
-            act.loadFragment(AddAndModFragment())
+            act.loadFragment(AddAndModFragment(list.get(position)))
             true
         }
         holder.name.text = list.get(position).Name
