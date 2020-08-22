@@ -10,6 +10,8 @@ class MemoryAccesser(ct: Context) {
     companion object {
         val List = "DtList"
         val File = "Dta"
+        var Loaded = false
+        lateinit var Data: ArrayList<DataItem>
     }
 
     lateinit var accesser: SharedPreferences
@@ -30,6 +32,10 @@ class MemoryAccesser(ct: Context) {
             )
         } catch (ex: Exception) {
             ex.printStackTrace()
+        }
+        if (!Loaded) {
+            Data = getData()
+            Loaded = true
         }
     }
 
