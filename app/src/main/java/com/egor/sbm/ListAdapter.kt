@@ -1,12 +1,13 @@
 package com.egor.sbm
 
+import android.app.Activity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.data_item.view.*
 
-class ListAdapter(var type: Int) :
+class ListAdapter(var type: Int, var act: Activity) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var list: ArrayList<DataItem>
 
@@ -47,11 +48,22 @@ class ListAdapter(var type: Int) :
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val holder = holder as ItemHolder
+        holder.value.setOnLongClickListener {
+
+            true
+        }
         holder.name.text = list.get(position).Name
         holder.time.text = list.get(position).Time
-        if (list.get(position).Value > 0) holder.value.text =
-            "+" + list.get(position).Value.toString()
-        else holder.value.text = list.get(position).Value.toString()
+        if (list.get(position).Value > 0) {
+            holder.value.background = act.resources.getDrawable(R.drawable.backgreen)
+            holder.value.setTextColor(act.resources.getColor(R.color.Green))
+            holder.value.text =
+                "+".plus(list.get(position).Value.toString())
+        } else {
+            holder.value.background = act.resources.getDrawable(R.drawable.backred)
+            holder.value.setTextColor(act.resources.getColor(R.color.Red))
+            holder.value.text = list.get(position).Value.toString()
+        }
     }
 
     inner class ItemHolder(root: View) :

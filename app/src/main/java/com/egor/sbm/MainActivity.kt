@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         list.add(DataItem(2000, "Взятка"))
         list.add(DataItem(-1000, "Конфеты"))
         list.add(DataItem(-3000, "Еда"))
-        list.add(DataItem(40000, "Нашла"))
+        list.add(DataItem(4000, "Нашла"))
         MemoryAccesser(this).setData(list)
         navigation.setOnNavigationItemSelectedListener(BottomNavigationView.OnNavigationItemSelectedListener { item ->
             when (item.itemId) {

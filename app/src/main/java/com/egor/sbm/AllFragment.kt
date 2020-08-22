@@ -1,5 +1,6 @@
 package com.egor.sbm
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -25,9 +26,11 @@ class AllFragment() : Fragment() {
         }
         if (a > 0) {
             total.text = "+" + a
+            total.setTextColor(resources.getColor(R.color.Green))
         } else {
             total.text = a.toString()
+            total.setTextColor(resources.getColor(R.color.Red))
         }
-        list.adapter = ListAdapter(0)
+        list.adapter = ListAdapter(0, activity as Activity)
     }
 }
