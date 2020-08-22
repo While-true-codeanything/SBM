@@ -28,9 +28,11 @@ class AllFragment() : Fragment() {
         if (a > 0) {
             total.text = "+" + a
             total.setTextColor(resources.getColor(R.color.Green))
+            total.background = activity!!.resources.getDrawable(R.drawable.backgreen)
         } else {
             total.text = a.toString()
             total.setTextColor(resources.getColor(R.color.Red))
+            total.background = activity!!.resources.getDrawable(R.drawable.backred)
         }
         create.setOnClickListener {
             (activity as MainActivity).loadFragment(AddAndModFragment())
