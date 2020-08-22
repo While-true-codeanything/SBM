@@ -2,9 +2,9 @@ package com.egor.sbm
 
 import android.content.Context
 import android.content.SharedPreferences
-import androidx.security.crypto.EncryptedSharedPreferences
-import androidx.security.crypto.MasterKeys
 import com.google.gson.Gson
+import org.json.JSONObject
+
 
 class MemoryAccesser(ct: Context) {
     companion object {
@@ -18,42 +18,36 @@ class MemoryAccesser(ct: Context) {
 
     init {
         try {
-            val masterKeyAlias: String = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
             accesser = ct.getSharedPreferences(
                 File,
                 Context.MODE_PRIVATE
-            )
-            accesser = EncryptedSharedPreferences.create(
-                File,
-                masterKeyAlias,
-                ct,
-                EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-                EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
             )
         } catch (ex: Exception) {
             ex.printStackTrace()
         }
         if (!Loaded) {
-            Data = getData()
             Loaded = true
+            getData()
         }
     }
 
     fun setData(data: ArrayList<DataItem>) {
         val editor: SharedPreferences.Editor = accesser.edit()
         val converter = Gson()
-        val json: String = converter.toJson(data)
+        val json: String = converter.toJson(DataBlank(data))
         editor.putString(List, json)
         editor.apply()
+        getData()
     }
 
-    fun getData(): ArrayList<DataItem> {
+    fun getData() {
         val gson = Gson()
         if (accesser.contains(List)) {
             val json: String = accesser.getString(List, "").toString()
+            val object2 = JSONObject(json)
             val list: ArrayList<DataItem> =
-                gson.fromJson<ArrayList<DataItem>>(json, DataItem::class.java)
-            return list
-        } else return ArrayList()
+                gson.fromJson(object2.toString(), DataBlank::class.java).Data
+            Data = list
+        } else Data = ArrayList()
     }
 }

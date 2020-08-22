@@ -49,7 +49,9 @@ class ListAdapter(var type: Int) :
         val holder = holder as ItemHolder
         holder.name.text = list.get(position).Name
         holder.time.text = list.get(position).Time
-        holder.value.text = list.get(position).Value.toString()
+        if (list.get(position).Value > 0) holder.value.text =
+            "+" + list.get(position).Value.toString()
+        else holder.value.text = list.get(position).Value.toString()
     }
 
     inner class ItemHolder(root: View) :

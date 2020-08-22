@@ -5,8 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import kotlinx.android.synthetic.main.list_fragment.*
 
-class AllFragment(var Data: ArrayList<DataItem>) : Fragment() {
+class AllFragment() : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -17,6 +18,16 @@ class AllFragment(var Data: ArrayList<DataItem>) : Fragment() {
 
     override fun onStart() {
         super.onStart()
-
+        val dlist = MemoryAccesser.Data
+        var a = 0
+        for (i in 0 until dlist.size) {
+            a += dlist.get(i).Value
+        }
+        if (a > 0) {
+            total.text = "+" + a
+        } else {
+            total.text = a.toString()
+        }
+        list.adapter = ListAdapter(0)
     }
 }
